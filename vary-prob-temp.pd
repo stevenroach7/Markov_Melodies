@@ -6,22 +6,42 @@
 #X obj 279 84 list;
 #X obj 280 176 list split 1;
 #X obj 280 143 list split 2;
-#X obj 736 204 pow;
+#X obj 733 204 pow;
 #X obj 280 227 list append;
 #X obj 281 277 list append;
 #X obj 320 252 t l;
-#X obj 251 466 outlet;
+#X obj 245 448 outlet;
 #X obj 420 101 t b;
-#X text 412 131 Clear list each time message is passed through inlet.
+#X text 420 120 Clear list each time message is passed through inlet.
 ;
-#X obj 251 394 list append;
+#X obj 245 394 list append;
 #X obj 483 253 t b;
 #X obj 328 111 list append;
 #X obj 282 313 t b l;
 #X obj 187 93 t b;
-#X obj 752 126 map-0-to-1-to-0-to-11;
-#X text 504 489 TODO: Comment this patch.;
-#X connect 0 0 19 0;
+#X text 35 91 Read new pair of notes.;
+#X text 511 254 output list when no more pairs can be split.;
+#X text 628 223 Raise probability to power specified by temperature
+value.;
+#X text 756 108 convert value to be between 0 and 11;
+#X obj 748 126 map-0-to-1-to-11-to-0;
+#X text 593 337 This patch takes a list representing a row in a transition
+matrix. This transition matrix can be for pitches or rhythms. The patch
+also takes a temperature value between 0 and 1 This value determines
+the exponent each probability in the list will be raised to (ranging
+from 0 to 11). The goal of this process is to decrease the difference
+between different probabilities by having a high temperature value
+and increase the difference between different probabilities by having
+a low temperature value. This works because as different numbers are
+raised to an exponent below 1 \, the difference between them decreases
+with 0 being the extreme where all probabilities inputted will now
+have a value of 1 (complete randomness). As numbers are raised to exponents
+above 1 \, the difference between the numbers magnifies exponentially.
+This will cause the most likely probabilities to always be chosen.
+;
+#X text 472 32 Low temperature value -> More deterministic.;
+#X text 472 50 High Temperature value -> More random.;
+#X connect 0 0 23 0;
 #X connect 3 0 4 0;
 #X connect 3 0 12 0;
 #X connect 4 0 6 0;
@@ -42,4 +62,4 @@
 #X connect 17 0 18 0;
 #X connect 17 1 14 1;
 #X connect 18 0 16 0;
-#X connect 19 0 7 1;
+#X connect 23 0 7 1;
