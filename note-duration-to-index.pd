@@ -1,0 +1,21 @@
+#N canvas 196 40 1044 605 10;
+#X obj 326 20 inlet;
+#X obj 107 26 inlet;
+#X text 368 19 first note synbol;
+#X text 151 25 second note symbol;
+#X obj 245 156 +;
+#X obj 247 216 outlet;
+#X text 385 183 The data representation specified by the index mapping
+patch can be thought of as a flattened Markov transition matrix. The
+left inlet specifies the row in the original matrix and the right inlet
+specifies the column. The index returned is for the flattened transition
+matrix.;
+#X obj 325 89 note-to-num;
+#X obj 110 91 duration-to-num;
+#X obj 325 118 * 8;
+#X connect 0 0 7 0;
+#X connect 1 0 8 0;
+#X connect 4 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 4 0;
+#X connect 9 0 4 1;

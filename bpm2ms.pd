@@ -1,0 +1,17 @@
+#N canvas 441 207 286 226 12;
+#X obj 41 51 /;
+#X floatatom 61 78 5 0 0 0 - - -;
+#X obj 19 23 60000;
+#X obj 25 -4 t b f;
+#X obj 25 -55 inlet;
+#X floatatom 41 -27 5 0 0 0 - - -;
+#X obj 41 101 outlet;
+#X text 11 -91 convert tempo in beats per minute;
+#X text 10 -75 to beat duration in millisecs;
+#X connect 0 0 1 0;
+#X connect 0 0 6 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 3 1 0 1;
+#X connect 4 0 3 0;
+#X connect 4 0 5 0;

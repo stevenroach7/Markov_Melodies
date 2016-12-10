@@ -1,0 +1,91 @@
+#N canvas 131 23 1281 814 10;
+#X obj 232 197 textfile, f 9;
+#X msg 249 133 rewind;
+#X obj 232 236 list split 1;
+#X obj 277 404 list split 2;
+#X obj 276 482 list split 1;
+#X obj 310 510 t f;
+#X obj 232 289 t b s;
+#X obj 309 372 list append;
+#X obj 124 588 t b b f;
+#X obj 276 318 list append;
+#X obj 245 603 list append;
+#X text 320 584 Store probability in list append object. After the
+index is calculated and sent to the array set object \, the probability
+stored in the list append object is sent to the array set object to
+be added to the flattened transition matrix.;
+#X obj 234 27 inlet;
+#X text 277 27 Bang to start patch.;
+#X text 420 26 First \, we define our array and clear it in case it
+has already been defined. Then we send the textfile to be read into
+the textfile object. Next we rewind the pointer on the textfile object
+to the beginning for the text file it is reading. Then we send a bang
+to the textfile object so that it can start reading the first line
+in the text file.;
+#X obj 234 80 t b b b b b;
+#X obj 297 134 symbol \$1;
+#X msg 298 156 read \$1;
+#X obj 232 264 t s;
+#X obj 61 355 t b;
+#X obj 158 441 t b;
+#X obj 141 181 t b;
+#X text 32 336 process next pair;
+#X text 45 181 read next line;
+#X obj 127 674 array set \$2;
+#X text 622 112 Define an array with length 96 This array is a flattened
+transition matrix where the row of the matrix corresponds to the pitch
+\, the column corresponds to the potential duration to hold the pitch
+for \, and the value corresponds to the probability of that duration
+given the current note.;
+#X obj 388 148 array define \$2 96;
+#X obj 125 534 note-duration-to-index;
+#X text 363 487 Split potential duration and probability.;
+#X obj 275 509 t f;
+#X msg 387 124 const 0;
+#X text 361 198 Split off the first symbol from this line of the text
+file. The first symbol specifies the current pitch being played. The
+rest of the line specifies the potential durations and their probabilities.
+;
+#X text 354 294 Maks sure current note is stored in note-duration-to-index
+before potential durations are passed to note-duration-to-index to
+trigger execution.;
+#X text 449 358 Split first two elements (potential duration and probabilitiy)
+from list. Send potential duration to note-duration-to-index to calculate
+the index in the flattened transition matrix for the probability to
+be added to. Send rest of list to be stored in list append and repeat
+this process once the previous probability has been added to the transition
+matrix. When the entire list has been processed \, The right outlet
+sends a bang for a new line in the text file to be read.;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 18 0;
+#X connect 2 1 9 1;
+#X connect 3 0 4 0;
+#X connect 3 1 7 1;
+#X connect 3 2 20 0;
+#X connect 4 0 29 0;
+#X connect 4 1 5 0;
+#X connect 5 0 10 1;
+#X connect 6 0 9 0;
+#X connect 6 1 27 1;
+#X connect 7 0 3 0;
+#X connect 8 0 19 0;
+#X connect 8 1 10 0;
+#X connect 8 2 24 1;
+#X connect 9 0 3 0;
+#X connect 10 0 24 0;
+#X connect 12 0 15 0;
+#X connect 15 0 0 0;
+#X connect 15 1 1 0;
+#X connect 15 2 16 0;
+#X connect 15 3 30 0;
+#X connect 15 4 26 0;
+#X connect 16 0 17 0;
+#X connect 17 0 0 0;
+#X connect 18 0 6 0;
+#X connect 19 0 7 0;
+#X connect 20 0 21 0;
+#X connect 21 0 0 0;
+#X connect 27 0 8 0;
+#X connect 29 0 27 0;
+#X connect 30 0 26 0;

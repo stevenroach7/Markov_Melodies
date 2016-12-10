@@ -1,0 +1,67 @@
+#N canvas 510 85 717 451 12;
+#X obj 76 225 list split 1;
+#X obj 76 99 until;
+#X obj 76 180 list append;
+#X obj 224 26 inlet;
+#X obj 95 395 outlet;
+#X obj 76 30 inlet;
+#X obj 146 261 >;
+#X obj 12 326 f;
+#X obj 146 296 sel 1;
+#X obj 146 327 t b b;
+#X obj 95 365 f;
+#X text 20 5 random number;
+#X obj 150 57 list append;
+#X floatatom 21 28 5 0 0 0 - - -;
+#X obj 76 57 t b f b b;
+#X obj 46 129 t b b;
+#X obj 33 99 -2;
+#X obj 53 327 + 2;
+#X obj 230 245 t b;
+#X obj 164 104 t f;
+#X text 222 -10 list of running totals: needed before the random number
+in left inet;
+#X text 88 417 output the index into the original list;
+#X text 263 60 bang the running totals list into the append below \,
+reset our counter (f bottom left) to -2 \, send the random number to
+the right inlet of > (below) for comparison in the loop \, and then
+start the loop with a bang to until;
+#X text 266 196 pop off the first element and store the rest of the
+list back above for popping again next time through the loop. If we
+get to the end of the list \, split sends a bang out of its right outlet
+\, and we send this to the right inlet of until to stop the loop;
+#X text 216 278 if the running total list element is > the incoming
+random number then we output the index into the original list (0 based)
+after stopping the until loop;
+#X text 192 136 first \, increment our index by 2 \, then bang the
+list to send it to split;
+#X text 201 329 the counter increments by 2 each time because our running
+totals list is every other element of the list of weightings and we
+actually want the index to the element just before that which the running
+total list element references;
+#X connect 0 0 6 0;
+#X connect 0 1 2 1;
+#X connect 0 2 18 0;
+#X connect 1 0 15 0;
+#X connect 2 0 0 0;
+#X connect 3 0 12 1;
+#X connect 5 0 14 0;
+#X connect 6 0 8 0;
+#X connect 7 0 17 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 9 1 18 0;
+#X connect 10 0 4 0;
+#X connect 12 0 2 1;
+#X connect 13 0 14 0;
+#X connect 14 0 1 0;
+#X connect 14 1 19 0;
+#X connect 14 2 16 0;
+#X connect 14 3 12 0;
+#X connect 15 0 2 0;
+#X connect 15 1 7 0;
+#X connect 16 0 7 1;
+#X connect 17 0 7 1;
+#X connect 17 0 10 1;
+#X connect 18 0 1 1;
+#X connect 19 0 6 1;

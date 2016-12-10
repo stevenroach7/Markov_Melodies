@@ -1,0 +1,91 @@
+#N canvas 87 23 1225 757 10;
+#X obj 213 179 textfile, f 9;
+#X msg 230 115 rewind;
+#X obj 213 218 list split 1;
+#X obj 258 386 list split 2;
+#X obj 257 464 list split 1;
+#X obj 291 492 t f;
+#X obj 158 522 notes-to-index;
+#X obj 256 491 t s;
+#X obj 213 271 t b s;
+#X obj 290 354 list append;
+#X obj 157 552 t b b f;
+#X text 342 180 Split off the first symbol from this line of the text
+file. The first symbol specifies the current pitch being played. The
+rest of the line specifies the potential pitches and their probabilities.
+;
+#X text 335 276 Maks sure current note is stored in notes-to-index
+before potential notes are passed to notes-to-index to trigger execution.
+;
+#X obj 257 300 list append;
+#X text 344 469 Split potential pitch and probability.;
+#X obj 226 585 list append;
+#X text 301 566 Store probability in list append object. After the
+index is calculated and sent to the array set object \, the probability
+stored in the list append object is sent to the array set object to
+be added to the flattened transition matrix.;
+#X text 430 340 Split first two elements (potential pitch and probabilitiy)
+from list. Send potential pitch to notes-to-index to calculate the
+index in the flattened transition matrix for the probability to be
+added to. Send rest of list to be stored in list append and repeat
+this process once the previous probability has been added to the transition
+matrix. When the entire list has been processed \, The right outlet
+sends a bang for a new line in the text file to be read.;
+#X obj 215 9 inlet;
+#X text 258 9 Bang to start patch.;
+#X text 401 8 First \, we define our array and clear it in case it
+has already been defined. Then we send the textfile to be read into
+the textfile object. Next we rewind the pointer on the textfile object
+to the beginning for the text file it is reading. Then we send a bang
+to the textfile object so that it can start reading the first line
+in the text file.;
+#X msg 368 106 const 0;
+#X obj 215 62 t b b b b b;
+#X obj 278 116 symbol \$1;
+#X msg 279 138 read \$1;
+#X obj 213 246 t s;
+#X obj 42 337 t b;
+#X obj 139 423 t b;
+#X obj 122 163 t b;
+#X text 13 318 process next pair;
+#X text 26 163 read next line;
+#X text 603 94 Define an array with length 144 This array is a flattened
+transition matrix where the row of the matrix corresponds to the current
+pitch \, the column corresponds to the potential pitch to play next
+\, and the value corresponds to the probability of the potential pitch
+being played given the current note.;
+#X obj 105 656 array set \$2;
+#X obj 369 130 array define \$2 144;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 25 0;
+#X connect 2 1 13 1;
+#X connect 3 0 4 0;
+#X connect 3 1 9 1;
+#X connect 3 2 27 0;
+#X connect 4 0 7 0;
+#X connect 4 1 5 0;
+#X connect 5 0 15 1;
+#X connect 6 0 10 0;
+#X connect 7 0 6 0;
+#X connect 8 0 13 0;
+#X connect 8 1 6 1;
+#X connect 9 0 3 0;
+#X connect 10 0 26 0;
+#X connect 10 1 15 0;
+#X connect 10 2 32 1;
+#X connect 13 0 3 0;
+#X connect 15 0 32 0;
+#X connect 18 0 22 0;
+#X connect 21 0 33 0;
+#X connect 22 0 0 0;
+#X connect 22 1 1 0;
+#X connect 22 2 23 0;
+#X connect 22 3 21 0;
+#X connect 22 4 33 0;
+#X connect 23 0 24 0;
+#X connect 24 0 0 0;
+#X connect 25 0 8 0;
+#X connect 26 0 9 0;
+#X connect 27 0 28 0;
+#X connect 28 0 0 0;

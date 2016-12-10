@@ -1,0 +1,58 @@
+#N canvas 63 196 1186 560 12;
+#X floatatom -16 164 5 0 0 0 - - -, f 5;
+#X floatatom -33 242 5 0 0 0 - - -, f 5;
+#X obj -38 215 frand 9.4;
+#X obj -147 259 weight-search;
+#X floatatom -137 289 5 0 0 0 - - -, f 5;
+#X obj 65 95 t l l;
+#X obj -182 400 list split;
+#X obj -147 315 t b f;
+#X obj -149 432 list split 1;
+#X obj -76 358 list append;
+#X obj 65 64 list;
+#X obj 65 35 inlet;
+#X obj -132 36 inlet;
+#X obj -149 462 outlet;
+#X text -183 9 bang in to get next weighted random selection;
+#X obj -38 187 bng 15 250 50 0 empty empty empty 0 -6 0 10 -262144
+-1 -1;
+#X text 8 242 don't connect through interface objects!;
+#X text 111 33 weighting list: this needs to arrive before the first
+bang;
+#X text 67 207 generate a random floating point number between 0 and
+the sum;
+#X text 103 128 find the sum of all the weightings in the list (right
+outlet) and the running totals for each weight (left outlet) e.g. d
+0.1 e 0.35 f 0.25 would generate a sum of 0.7 and running totals of
+0.1 0.45 and 0.7;
+#X text 83 271 the weight-search algorithm uses the random number and
+compares this to the list of running totals: it finds the element in
+that list that is > the random number and then outputs the corresponding
+index into the original weighting list.;
+#X text -38 395 bang out the original weighting list and output the
+element we've determined with the weight-search algorithm by sending
+that index into the right inlet of split (the split point)--that split
+itself results in two lists: we're interested in the first element
+of the second list hence the second split.;
+#X obj -59 134 weight-total;
+#X text 111 96 first store the list in the append below;
+#X text 519 480 This patch was created by Michael Edwards. It can be
+found at http://michael-edwards.org/class/edi/music2d/markov.html;
+#X connect 2 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 3 0 4 0;
+#X connect 5 0 22 0;
+#X connect 5 1 9 1;
+#X connect 6 1 8 0;
+#X connect 7 0 9 0;
+#X connect 7 1 6 1;
+#X connect 8 0 13 0;
+#X connect 9 0 6 0;
+#X connect 10 0 5 0;
+#X connect 11 0 10 0;
+#X connect 12 0 2 0;
+#X connect 15 0 2 0;
+#X connect 22 0 3 1;
+#X connect 22 1 0 0;
+#X connect 22 1 2 1;

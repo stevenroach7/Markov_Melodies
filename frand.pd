@@ -1,0 +1,19 @@
+#N canvas 203 350 630 242 12;
+#X obj 73 41 random 1e+06;
+#X obj 73 9 inlet;
+#X obj 73 186 outlet;
+#X obj 210 9 inlet;
+#X text 5 8 bang in;
+#X obj 73 73 / 1e+06;
+#X obj 73 154 * \$1;
+#X text 266 9 reset range \; must be > 0;
+#X text 201 48 get a random integer < a million;
+#X text 173 76 divide by a million to bring it between 0 and 1 as a
+float;
+#X text 121 152 multiply by our argument to bring it within desired
+range;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 3 0 6 1;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
