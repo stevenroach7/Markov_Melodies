@@ -51,7 +51,7 @@ accepted by the weight abstraction.;
 #X obj 363 559 r \$0-tempo;
 #X obj 203 281 array get \$1;
 #X obj 135 551 weight;
-#N canvas 401 25 1214 670 rhythm 1;
+#N canvas 401 25 1214 670 rhythm 0;
 #X obj 246 143 loadbang;
 #X obj 171 206 list;
 #X obj 273 298 alternatively-combine-two-lists;
@@ -163,16 +163,14 @@ potential duration is always 0.5 in our data representation.;
 #X obj 941 56 s \$0-rhythm-temp;
 #X text 726 81 Low temperature value -> More deterministic.;
 #X text 726 99 High Temperature value -> More random.;
-#X obj 64 679 dac~;
-#X obj 125 608 r \$0-volume;
-#X obj 1056 87 inlet;
-#X text 1098 88 Volume;
-#X obj 1057 128 s \$0-volume;
-#X obj 67 632 sin-synth;
 #X text 439 529 The rhythm subpatch calculates the duration the pitch
 should be played for. It outputs a midi value \, a duration in milliseconds
 and sends a bang out the rightmost outlet for the next pitch to start.
 ;
+#X obj 67 667 outlet~;
+#X obj 139 614 127;
+#X obj 140 592 loadbang;
+#X obj 67 632 sin-synth;
 #X connect 0 0 20 1;
 #X connect 1 0 40 0;
 #X connect 3 0 4 0;
@@ -205,13 +203,12 @@ and sends a bang out the rightmost outlet for the next pitch to start.
 #X connect 40 0 7 0;
 #X connect 41 0 42 0;
 #X connect 42 0 13 0;
-#X connect 42 0 58 0;
-#X connect 42 1 58 1;
+#X connect 42 0 57 0;
+#X connect 42 1 57 1;
 #X connect 42 2 18 0;
 #X connect 43 0 41 1;
 #X connect 46 0 43 1;
 #X connect 47 0 50 0;
-#X connect 54 0 58 2;
-#X connect 55 0 57 0;
-#X connect 58 0 53 0;
-#X connect 58 0 53 1;
+#X connect 55 0 57 2;
+#X connect 56 0 55 0;
+#X connect 57 0 54 0;
