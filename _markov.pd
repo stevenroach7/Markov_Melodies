@@ -1,161 +1,252 @@
 #N canvas 113 66 1209 730 10;
-#X obj 867 56 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 18 238 symbol bf;
-#X obj 89 224 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 849 2 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 540 285 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#N canvas 0 23 1382 842 markov 1;
+#X msg 77 321 symbol bf;
+#X text 74 262 octave;
+#X floatatom 74 389 5 0 0 0 - - -, f 5;
+#X obj 76 368 hsl 128 15 60 300 0 0 empty tempo empty -2 -8 0 10 -204800
+-1 -1 3175 1;
+#X floatatom 222 387 5 0 0 0 - - -, f 5;
+#X obj 224 369 hsl 128 15 1 8 0 0 empty delay empty -2 -8 0 10 -204800
+-1 -1 0 1;
+#X obj 1225 912 loadbang;
+#X obj 1162 1007 list;
+#X obj 1235 1008 print;
+#X obj 1095 928 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 32 78 octave;
-#X text 107 81 tempo;
-#X floatatom 143 152 5 0 0 0 - - -, f 5;
-#X floatatom 49 109 5 0 0 0 - octave -, f 5;
-#X obj 95 108 hsl 128 15 60 300 0 0 empty tempo empty -2 -8 0 10 -262144
--1 -1 6200 1;
-#X floatatom 291 155 5 0 0 0 - - -, f 5;
-#X obj 243 111 hsl 128 15 1 8 0 0 empty delay empty -2 -8 0 10 -262144
+#X floatatom 1157 931 5 0 0 0 - - -, f 5;
+#X obj 1182 899 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1225 937 144;
+#X obj 76 424 hsl 128 15 0 1 0 0 empty pitch-temp empty -2 -8 0 10
+-204800 -1 -1 0 1;
+#X floatatom 74 446 5 0 0 0 - - -, f 5;
+#X obj 222 425 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10 -204800
 -1 -1 0 1;
-#X text 255 84 delay factor;
-#X text 633 150 octave;
-#X text 708 153 tempo;
-#X floatatom 744 224 5 0 0 0 - - -, f 5;
-#X floatatom 644 179 5 0 0 0 - octave -, f 5;
-#X obj 696 180 hsl 128 15 60 300 0 0 empty tempo empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X floatatom 892 227 5 0 0 0 - - -, f 5;
-#X obj 838 183 hsl 128 15 1 8 0 0 empty delay empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X text 856 156 delay factor;
-#X obj 142 301 loadbang;
-#X obj 79 396 list;
-#X obj 152 397 print;
-#X obj 10 298 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X floatatom 74 320 5 0 0 0 - - -, f 5;
-#X obj 873 10 construct-pitch-matrix gregorian2.txt mat-1;
-#X obj 99 288 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 142 326 144;
-#X obj 842 22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 858 37 construct-rhythm-matrix greg-rhythm.txt rhy-mat1;
-#X msg 463 305 symbol d;
-#X obj 903 113 replace-pitch-matrix-row mat-1;
-#X obj 887 67 construct-pitch-matrix gregorian.txt mat-0;
-#X obj 889 93 replace-rhythm-matrix-row rhy-mat1;
-#X msg 840 76 c 4 1, f 6;
-#X obj 982 184 hsl 128 15 0 1 0 0 empty pitch-temp empty -2 -8 0 10
--262144 -1 -1 6350 1;
-#X floatatom 965 238 5 0 0 0 - - -, f 5;
-#X text 991 166 pitch temperature;
-#X obj 1068 228 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10
--262144 -1 -1 6350 1;
-#X floatatom 1051 282 5 0 0 0 - - -, f 5;
-#X text 1077 210 rhythm temperature;
-#X obj 397 112 hsl 128 15 0 1 0 0 empty pitch-temp empty -2 -8 0 10
--262144 -1 -1 6350 1;
-#X floatatom 380 166 5 0 0 0 - - -, f 5;
-#X text 406 94 pitch temperature;
-#X obj 483 156 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10 -262144
+#X floatatom 220 447 5 0 0 0 - - -, f 5;
+#X obj 466 937 dac~;
+#X obj 558 902 *~;
+#X obj 342 905 *~;
+#X obj 430 500 hsl 128 20 0 1 0 0 empty pan Panning -2 -8 0 10 -228856
 -1 -1 6350 1;
-#X floatatom 466 210 5 0 0 0 - - -, f 5;
-#X text 492 138 rhythm temperature;
-#X text 549 60 Low temperature value -> More deterministic.;
-#X text 550 79 High Temperature value -> More random.;
-#X msg 853 105 d f 1;
-#X obj 171 253 markov-voice mat-0 rhy-mat1, f 29;
-#X obj 569 551 dac~;
-#X obj 784 482 *~;
-#X obj 568 485 *~;
-#X obj 780 410 hsl 128 20 0 1 0 0 empty pan Panning -2 -8 0 10 -262144
--1 -1 6350 1;
-#X floatatom 805 435 5 0 0 0 - - -, f 5;
-#X text 832 370 0.5: Centre;
-#X text 830 388 1: 100% Right;
-#X text 833 357 0: 100% Left;
-#X obj 568 442 mono-sqrt-power-panning;
-#X obj 1067 640 line~;
-#X obj 1067 606 pack f 50;
-#X obj 1067 503 vsl 24 90 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1200 1;
-#X obj 1067 673 s~ master-vol;
-#X obj 860 449 r~ master-vol;
-#X obj 30 562 loadbang;
-#X msg 30 593 \; pan 0.5 \; tempo 120 \; delay 1 \; pitch-temp 0.5
-\; rhy-temp 0.5 \; octave 4;
-#X obj 199 514 savepanel;
-#X msg 213 579 start;
-#X msg 222 607 stop;
-#X text 281 515 Open browser;
-#X text 258 578 start writing;
-#X text 260 606 stop writing;
-#X msg 199 546 open -wave -bytes 3 \$1;
-#X obj 199 486 bng 17 250 50 0 empty empty open 19 7 0 10 -262144 -1
+#X floatatom 426 529 5 0 0 0 - - -, f 5;
+#X obj 405 856 mono-sqrt-power-panning;
+#X obj 1070 624 line~;
+#X obj 1070 590 pack f 50;
+#X obj 1070 657 s~ master-vol;
+#X obj 634 869 r~ master-vol;
+#X obj 786 723 loadbang;
+#X obj 11 765 savepanel;
+#X msg 99 725 start;
+#X msg 152 727 stop;
+#X msg 11 797 open -wave -bytes 3 \$1;
+#X obj 82 499 bng 30 250 50 0 empty empty Open 35 7 0 10 -228856 -1
 -1;
-#X text 197 460 Write sound to file;
-#X obj 199 673 writesf~ 2;
-#X obj 226 641 r~ Left;
-#X obj 290 641 r~ Right;
-#X obj 589 513 s~ Left;
-#X obj 804 510 s~ Right;
-#X obj 700 322 markov-voice mat-1 rhy-mat1, f 39;
-#X obj 79 355 array get mat-1;
-#X connect 0 0 33 0;
-#X connect 1 0 51 0;
-#X connect 2 0 51 1;
-#X connect 3 0 26 0;
-#X connect 4 0 82 1;
-#X connect 8 0 51 2;
-#X connect 9 0 7 0;
-#X connect 9 0 51 3;
-#X connect 11 0 10 0;
-#X connect 11 0 51 4;
-#X connect 16 0 82 2;
-#X connect 17 0 15 0;
-#X connect 17 0 82 3;
-#X connect 19 0 18 0;
-#X connect 19 0 82 4;
-#X connect 21 0 28 0;
-#X connect 24 0 83 0;
-#X connect 25 0 83 0;
-#X connect 27 0 28 0;
-#X connect 28 0 83 1;
-#X connect 29 0 30 0;
-#X connect 31 0 82 0;
+#X text 118 475 Write sound to file;
+#X obj 11 924 writesf~ 2;
+#X obj 38 892 r~ Left;
+#X obj 101 894 r~ Right;
+#X obj 363 933 s~ Left;
+#X obj 578 930 s~ Right;
+#X obj 1162 966 array get mat-1;
+#X msg 910 800 \; pd dsp \$1;
+#X obj 1018 517 tgl 22 0 empty empty empty 17 7 0 10 -228856 -1 -1
+1 1;
+#X text 176 252 Voice 1;
+#X text 80 350 Tempo;
+#X text 219 353 Delay Factor;
+#X obj 738 886 number;
+#X text 72 406 Pitch Temperature;
+#X text 218 406 Rhythm Temperature;
+#X obj 221 280 tgl 22 0 empty empty empty 17 7 0 10 -204800 -1 -1 0
+1;
+#X text 245 281 Toggle on/off;
+#X text 75 302 Note to start;
+#X obj 223 323 hsl 128 15 0 127 0 0 empty volume empty -2 -8 0 10 -204800
+-1 -1 1500 1;
+#X text 221 308 Volume;
+#X msg 422 322 symbol bf;
+#X text 419 266 octave;
+#X floatatom 419 390 5 0 0 0 - - -, f 5;
+#X obj 421 369 hsl 128 15 60 300 0 0 empty tempo empty -2 -8 0 10 -203904
+-1 -1 3175 1;
+#X floatatom 567 388 5 0 0 0 - - -, f 5;
+#X obj 569 370 hsl 128 15 1 8 0 0 empty delay empty -2 -8 0 10 -203904
+-1 -1 0 1;
+#X obj 421 425 hsl 128 15 0 1 0 0 empty pitch-temp empty -2 -8 0 10
+-203904 -1 -1 6350 1;
+#X floatatom 419 447 5 0 0 0 - - -, f 5;
+#X obj 567 426 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10 -203904
+-1 -1 6350 1;
+#X floatatom 565 448 5 0 0 0 - - -, f 5;
+#X text 425 351 Tempo;
+#X text 564 354 Delay Factor;
+#X text 417 407 Pitch Temperature;
+#X text 563 407 Rhythm Temperature;
+#X obj 566 281 tgl 22 0 empty empty empty 17 7 0 10 -203904 -1 -1 0
+1;
+#X text 595 282 Toggle on/off;
+#X text 420 303 Note to start;
+#X obj 568 324 hsl 128 15 0 127 0 0 empty volume empty -2 -8 0 10 -203904
+-1 -1 2000 1;
+#X text 566 309 Volume;
+#X text 522 253 Voice 2;
+#X msg 763 322 symbol bf;
+#X text 760 264 octave;
+#X floatatom 760 390 5 0 0 0 - - -, f 5;
+#X obj 762 369 hsl 128 15 60 300 0 0 empty tempo empty -2 -8 0 10 -261234
+-1 -1 3175 1;
+#X floatatom 908 388 5 0 0 0 - - -, f 5;
+#X obj 910 370 hsl 128 15 1 8 0 0 empty delay empty -2 -8 0 10 -261234
+-1 -1 0 1;
+#X obj 762 425 hsl 128 15 0 1 0 0 empty pitch-temp empty -2 -8 0 10
+-261234 -1 -1 6350 1;
+#X floatatom 760 447 5 0 0 0 - - -, f 5;
+#X obj 908 426 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10 -261234
+-1 -1 6350 1;
+#X floatatom 906 448 5 0 0 0 - - -, f 5;
+#X text 766 351 Tempo;
+#X text 905 354 Delay Factor;
+#X text 758 407 Pitch Temperature;
+#X text 904 407 Rhythm Temperature;
+#X obj 907 281 tgl 22 0 empty empty empty 17 7 0 10 -261234 -1 -1 0
+1;
+#X text 933 280 Toggle on/off;
+#X text 761 303 Note to start;
+#X obj 909 324 hsl 128 15 0 127 0 0 empty volume empty -2 -8 0 10 -261234
+-1 -1 2000 1;
+#X text 907 309 Volume;
+#X text 868 255 Voice 3;
+#X obj 766 665 markov-voice pitches3 rhythms3;
+#X obj 67 663 markov-voice pitches1 rhythms1;
+#X obj 402 664 markov-voice pitches2 rhythms2;
+#X text 807 469 Master Volume;
+#X text 1016 498 DSP;
+#X obj 149 500 bng 30 250 50 0 empty empty Start 35 7 0 10 -228856
+-1 -1;
+#X obj 221 501 bng 30 250 50 0 empty empty Stop 35 7 0 10 -228856 -1
+-1;
+#X obj 789 488 hsl 128 30 24 90 0 0 empty empty empty -2 -8 0 10 -228856
+-1 -1 1300 1;
+#X obj 77 280 nbx 3 20 0 7 0 0 empty octave empty 0 -8 0 10 -204800
+-1 -1 3 256;
+#X obj 764 281 nbx 3 20 0 7 0 0 empty octave empty 0 -8 0 10 -261234
+-1 -1 4 256;
+#X obj 421 283 nbx 3 20 0 7 0 0 empty octave empty 0 -8 0 10 -203904
+-1 -1 4 256;
+#X msg 786 754 \; pan 0.5 \; tempo 120 \; delay 1 \; pitch-temp 0.5
+\; rhy-temp 0.5 \; octave 4 \; volume 20;
+#X connect 0 0 94 0;
+#X connect 3 0 2 0;
+#X connect 3 0 94 3;
+#X connect 5 0 4 0;
+#X connect 5 0 94 4;
+#X connect 6 0 12 0;
+#X connect 9 0 39 0;
+#X connect 10 0 39 0;
+#X connect 11 0 12 0;
+#X connect 12 0 39 1;
+#X connect 13 0 14 0;
+#X connect 13 0 94 5;
+#X connect 15 0 16 0;
+#X connect 15 0 94 6;
+#X connect 18 0 17 1;
+#X connect 18 0 38 0;
+#X connect 19 0 17 0;
+#X connect 19 0 37 0;
+#X connect 20 0 21 0;
+#X connect 20 0 22 1;
+#X connect 22 0 19 0;
+#X connect 22 1 18 0;
+#X connect 23 0 25 0;
+#X connect 24 0 23 0;
+#X connect 26 0 18 1;
+#X connect 26 0 19 1;
+#X connect 27 0 104 0;
+#X connect 28 0 31 0;
+#X connect 29 0 34 0;
+#X connect 30 0 34 0;
+#X connect 31 0 34 0;
+#X connect 32 0 28 0;
 #X connect 35 0 34 0;
-#X connect 36 0 37 0;
-#X connect 36 0 82 5;
-#X connect 39 0 40 0;
-#X connect 39 0 82 6;
-#X connect 42 0 43 0;
-#X connect 42 0 51 5;
-#X connect 45 0 46 0;
-#X connect 45 0 51 6;
-#X connect 50 0 32 0;
-#X connect 51 0 60 0;
-#X connect 53 0 52 1;
-#X connect 53 0 81 0;
-#X connect 54 0 52 0;
-#X connect 54 0 80 0;
-#X connect 55 0 56 0;
-#X connect 55 0 60 1;
-#X connect 60 0 54 0;
-#X connect 60 1 53 0;
-#X connect 61 0 64 0;
-#X connect 62 0 61 0;
-#X connect 63 0 62 0;
-#X connect 65 0 53 1;
-#X connect 65 0 54 1;
-#X connect 66 0 67 0;
-#X connect 68 0 74 0;
-#X connect 69 0 77 0;
-#X connect 70 0 77 0;
-#X connect 74 0 77 0;
-#X connect 75 0 68 0;
+#X connect 36 0 34 1;
+#X connect 39 0 7 0;
+#X connect 39 0 8 0;
+#X connect 41 0 40 0;
+#X connect 48 0 94 1;
+#X connect 51 0 94 7;
+#X connect 53 0 95 0;
+#X connect 56 0 55 0;
+#X connect 56 0 95 3;
+#X connect 58 0 57 0;
+#X connect 58 0 95 4;
+#X connect 59 0 60 0;
+#X connect 59 0 95 5;
+#X connect 61 0 62 0;
+#X connect 61 0 95 6;
+#X connect 67 0 95 1;
+#X connect 70 0 95 7;
+#X connect 73 0 93 0;
+#X connect 76 0 75 0;
+#X connect 76 0 93 3;
 #X connect 78 0 77 0;
-#X connect 79 0 77 1;
-#X connect 82 0 60 0;
-#X connect 83 0 22 0;
-#X connect 83 0 23 0;
+#X connect 78 0 93 4;
+#X connect 79 0 80 0;
+#X connect 79 0 93 5;
+#X connect 81 0 82 0;
+#X connect 81 0 93 6;
+#X connect 87 0 93 1;
+#X connect 90 0 93 7;
+#X connect 93 0 22 0;
+#X connect 94 0 22 0;
+#X connect 95 0 22 0;
+#X connect 98 0 29 0;
+#X connect 99 0 30 0;
+#X connect 100 0 24 0;
+#X connect 101 0 94 2;
+#X connect 102 0 93 2;
+#X connect 103 0 95 2;
+#X coords 0 -1 1 1 1000 300 1 50 250;
+#X restore 44 230 pd markov;
+#X obj 69 51 construct-pitch-matrix gregorian.txt pitches1;
+#X obj 69 25 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 71 72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 71 98 construct-rhythm-matrix greg-rhythm.txt rhythms1;
+#X obj 750 78 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 412 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 72 118;
+#X obj 72 140 replace-pitch-matrix-row pitches1;
+#X obj 71 188 replace-rhythm-matrix-row rhythms1;
+#X msg 71 163;
+#X msg 413 122;
+#X msg 412 167;
+#X msg 752 122;
+#X msg 751 167;
+#X obj 413 144 replace-pitch-matrix-row pitches2;
+#X obj 412 192 replace-rhythm-matrix-row rhythms2;
+#X obj 752 144 replace-pitch-matrix-row pitches3;
+#X obj 751 192 replace-rhythm-matrix-row rhythms3;
+#X obj 409 29 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 748 33 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 410 53 construct-pitch-matrix gregorian2.txt pitches2;
+#X obj 412 100 construct-rhythm-matrix greg-rhythm.txt rhythms2;
+#X obj 748 57 construct-pitch-matrix gregorian.txt pitches3;
+#X obj 750 101 construct-rhythm-matrix greg-rhythm.txt rhythms3;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 5 0 24 0;
+#X connect 6 0 22 0;
+#X connect 7 0 8 0;
+#X connect 10 0 9 0;
+#X connect 11 0 15 0;
+#X connect 12 0 16 0;
+#X connect 13 0 17 0;
+#X connect 14 0 18 0;
+#X connect 19 0 21 0;
+#X connect 20 0 23 0;
+#X coords 0 730 1 729 85 60 0;
