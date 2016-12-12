@@ -4,7 +4,7 @@
 #X msg 18 238 symbol bf;
 #X obj 89 224 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 434 495 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 376 383 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 540 285 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -13,7 +13,7 @@
 #X floatatom 143 152 5 0 0 0 - - -, f 5;
 #X floatatom 49 109 5 0 0 0 - - -, f 5;
 #X obj 95 108 hsl 128 15 60 300 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 291 155 5 0 0 0 - - -, f 5;
 #X obj 243 111 hsl 128 15 1 8 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
@@ -23,7 +23,7 @@
 #X floatatom 744 224 5 0 0 0 - - -, f 5;
 #X floatatom 644 179 5 0 0 0 - - -, f 5;
 #X obj 696 180 hsl 128 15 60 300 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 9100 1;
 #X floatatom 892 227 5 0 0 0 - - -, f 5;
 #X obj 838 183 hsl 128 15 1 8 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
@@ -34,72 +34,78 @@
 #X obj 40 549 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X floatatom 104 571 5 0 0 0 - - -, f 5;
-#X obj 507 395 print;
-#X obj 350 528 construct-pitch-matrix gregorian2.txt mat-1;
+#X obj 501 352 print;
+#X obj 292 416 construct-pitch-matrix gregorian2.txt mat-1;
 #X obj 129 539 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 172 577 144;
-#X obj 586 425 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 580 382 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 587 459 construct-rhythm-matrix greg-rhythm.txt rhy-mat1;
-#X obj 700 322 markov-voice mat-1 rhy-mat1, f 39;
+#X obj 581 416 construct-rhythm-matrix greg-rhythm.txt rhy-mat1;
 #X msg 463 305 symbol d;
-#X obj 904 465 replace-pitch-matrix-row mat-1;
+#X obj 898 422 replace-pitch-matrix-row mat-1;
 #X obj 39 399 construct-pitch-matrix gregorian.txt mat-0;
-#X obj 694 572 replace-rhythm-matrix-row rhy-mat1;
+#X obj 258 353 replace-rhythm-matrix-row rhy-mat1;
 #X obj 109 606 array get rhy-mat1;
-#X msg 690 524 c 4 1;
-#X msg 891 399 d bf 1;
+#X msg 254 305 c 4 1;
 #X obj 982 184 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6200 1;
+-1 -1 12700 1;
 #X floatatom 965 238 5 0 0 0 - - -, f 5;
 #X text 991 166 pitch temperature;
 #X obj 1068 228 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5900 1;
+-1 -1 5700 1;
 #X floatatom 1051 282 5 0 0 0 - - -, f 5;
 #X text 1077 210 rhythm temperature;
 #X obj 397 112 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 380 166 5 0 0 0 - - -, f 5;
 #X text 406 94 pitch temperature;
 #X obj 483 156 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8800 1;
+-1 -1 0 1;
 #X floatatom 466 210 5 0 0 0 - - -, f 5;
 #X text 492 138 rhythm temperature;
-#X obj 171 253 markov-voice mat-0 rhy-mat1, f 29;
 #X text 550 61 Low temperature value -> More deterministic.;
 #X text 550 79 High Temperature value -> More random.;
-#X connect 0 0 35 0;
-#X connect 1 0 52 0;
-#X connect 2 0 52 1;
+#X obj 1133 263 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4300 1;
+#X obj 374 20 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 700 322 markov-voice mat-1 rhy-mat1, f 39;
+#X obj 171 253 markov-voice mat-0 rhy-mat1, f 29;
+#X msg 885 356 d f 1;
+#X connect 0 0 34 0;
+#X connect 1 0 55 0;
+#X connect 2 0 55 1;
 #X connect 3 0 27 0;
-#X connect 4 0 32 1;
-#X connect 8 0 52 2;
+#X connect 4 0 54 1;
+#X connect 8 0 55 2;
 #X connect 9 0 7 0;
-#X connect 9 0 52 3;
+#X connect 9 0 55 3;
 #X connect 11 0 10 0;
-#X connect 11 0 52 4;
-#X connect 16 0 32 2;
+#X connect 11 0 55 4;
+#X connect 16 0 54 2;
 #X connect 17 0 15 0;
-#X connect 17 0 32 3;
+#X connect 17 0 54 3;
 #X connect 19 0 18 0;
-#X connect 19 0 32 4;
+#X connect 19 0 54 4;
 #X connect 21 0 29 0;
-#X connect 24 0 37 0;
-#X connect 25 0 37 0;
+#X connect 24 0 36 0;
+#X connect 25 0 36 0;
 #X connect 28 0 29 0;
-#X connect 29 0 37 1;
+#X connect 29 0 36 1;
 #X connect 30 0 31 0;
-#X connect 33 0 32 0;
-#X connect 37 0 22 0;
-#X connect 37 0 23 0;
-#X connect 38 0 36 0;
-#X connect 39 0 34 0;
-#X connect 40 0 32 5;
-#X connect 40 0 41 0;
-#X connect 43 0 44 0;
-#X connect 43 0 32 6;
-#X connect 46 0 47 0;
-#X connect 46 0 52 5;
-#X connect 49 0 50 0;
-#X connect 49 0 52 6;
+#X connect 32 0 54 0;
+#X connect 36 0 22 0;
+#X connect 36 0 23 0;
+#X connect 37 0 35 0;
+#X connect 38 0 39 0;
+#X connect 38 0 54 5;
+#X connect 41 0 42 0;
+#X connect 41 0 54 6;
+#X connect 44 0 45 0;
+#X connect 44 0 55 5;
+#X connect 47 0 48 0;
+#X connect 47 0 55 6;
+#X connect 52 0 54 7;
+#X connect 53 0 55 7;
+#X connect 56 0 33 0;
