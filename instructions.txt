@@ -1,0 +1,30 @@
+This directory Markov_Melodies contains an algorithmic compositional program and synthesizer meant to serve as a composition and playback tool. It is programmed exclusively in Pure Data.
+
+There are 3 types of files present in this directory.
+1. The _markov.pd patch functions as a graphical user interface for users to play, modify, and change melodies according to different Markov rules. 
+2. There are several text files which define the transition matrices for pitch and rhythm which the Markov voices use to determine a melody. 
+3. The rest of the pd files are abstractions which are used to keep the program modular and easy to follow. 
+
+
+ To use, open the _markov.pd patch. I have initialized starting data for a song within the markov.pd subpatch so users will be able play music according to this input data directly from the _markov.pd patch. To play music, turn digital sound processing on, check the toggles for the voices you would like to play, click the bang to play a first note, and adjust the master volume to an appropriate level. To record your piece, click the open button to specify a file name and directory to save a wav file to, click start to start recording, and stop to end the recording. There are three voices programmed to accept different input data with different settings such as octave, volume, tempo, and more. Users may modify the configurations for each voice by interacting with the sliders for the voice they wish to modify. Users can also easily change the input data from the _markov.pd patch as the voices are being played. This is done by banging message boxes into the right 6 inlets of the markov subpatch. This gives users the ability to dramatically change the voice melodies as they are being played. This allows all interaction during playback to be performed inside of the _markov.pd patch.
+
+User Configurable Markov Voice Options:
+1. Toggle On/Off - If toggle is turned off and on again, a new starting note will need to be played for the voice to play again.
+2. Octave - The octave for the voice to play in (2-7).
+3. Transpose - A number added to each midi note value for that voice to allow voices to be transposed.
+4. Volume
+5. Tempo - Tempo in beats per minute (60-300).
+5. Delay Factor - Determines spacing between current note and next note. Values below one mean there will be a delay between the current note and the next note. Values above 1 mean that the next note will be played while the current note is still being played. 
+6. Pitch Temperature - Determines how deterministic and random the pitch probabilities should be. Low values make all probabilities in a row more different and therefore deterministic while high values make all probabilities in a row more similar and therefore more random.
+7. Rhythm Temperature
+8. Attack - The number of milliseconds for the attack of each note.
+9. Decay - The number of milliseconds for the decay of each note.
+10. Sustain - The level the note should be sustained at. 
+11. Release - The number of milliseconds for the release of each note.
+
+
+To change the composition completely, open the markov subpatch in the _markov.pd patch. Here, users may change the text files that each voice receives data from as well as the starting note for the composition.
+
+
+Markov Data Representation:
+The process to determine a note and its duration is determined by first order Markov chains. This means that the next note to play and the duration to play the current note for is calculated based off of the current note. By defining probabilities for each potential next note and each potential duration from a given current note, we can create compositions using randomness where notes and durations are chosen from these probabilities. This is represented with a transition matrix. In a pitches transition matrix, each row defines the current note to play, and each column defines the potential notes to play next. In a rhythm transition matrix, each row defines the current note to play, and each column defines the potential duration to play that note for. The values at each position correspond to counts and are not required to add up to 1. This is to make it easier to enter data. The markov selection process will automatically convert each count to a probability based on the sum of each row. Users also do not need to specify values where the count is zero. The program will automatically do this. Users may replace an entire row in a transition matrix by sending a message representing that row into the rightmost 6 inlets of the markov subpatch in the _markov.pd patch.

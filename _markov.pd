@@ -1,28 +1,27 @@
-#N canvas 113 66 1209 730 10;
+#N canvas 113 67 1209 730 10;
 #N canvas 79 23 1313 838 markov 0;
-#X text 216 356 octave;
 #X floatatom 216 441 5 0 0 0 - - -, f 5;
-#X obj 218 420 hsl 128 15 60 300 0 0 empty tempo1 empty -2 -8 0 10
--204800 -1 -1 1058 1;
+#X obj 218 420 hsl 128 15 60 320 0 0 empty tempo1 empty -2 -8 0 10
+-204800 -1 -1 1000 1;
 #X floatatom 364 439 5 0 0 0 - - -, f 5;
 #X obj 366 421 hsl 128 15 0.5 3 0 0 empty delay empty -2 -8 0 10 -204800
 -1 -1 2540 1;
 #X obj 218 476 hsl 128 15 0 1 0 0 empty pitch-temp empty -2 -8 0 10
--204800 -1 -1 6350 1;
+-204800 -1 -1 0 1;
 #X floatatom 216 495 5 0 0 0 - - -, f 5;
 #X obj 364 477 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10 -204800
 -1 -1 6350 1;
 #X floatatom 362 496 5 0 0 0 - - -, f 5;
-#X obj 599 779 dac~;
-#X obj 675 741 *~;
+#X obj 603 779 dac~;
+#X obj 679 741 *~;
 #X obj 539 745 *~;
 #X obj 707 245 hsl 128 30 0 1 0 0 empty pan Panning -2 -8 0 10 -228856
 -1 -1 6350 1;
 #X floatatom 703 279 5 0 0 0 - - -, f 5;
-#X obj 541 709 mono-sqrt-power-panning;
+#X obj 545 709 mono-sqrt-power-panning;
 #X obj 1203 310 line~;
 #X obj 1203 343 s~ master-vol;
-#X obj 704 716 r~ master-vol;
+#X obj 708 716 r~ master-vol;
 #X obj 39 450 loadbang;
 #X obj 37 277 savepanel;
 #X msg 73 346 start;
@@ -35,7 +34,7 @@
 #X obj 82 398 r~ Left;
 #X obj 145 400 r~ Right;
 #X obj 496 775 s~ Left;
-#X obj 711 772 s~ Right;
+#X obj 715 772 s~ Right;
 #X msg 1203 368 \; pd dsp \$1;
 #X obj 1159 246 tgl 30 0 empty empty empty 17 7 0 10 -228856 -1 -1
 0 1;
@@ -48,11 +47,11 @@
 1;
 #X text 242 328 Toggle on/off;
 #X obj 365 371 hsl 128 15 0 127 0 0 empty volume1 empty -2 -8 0 10
--204800 -1 -1 3000 1;
+-204800 -1 -1 4500 1;
 #X text 363 356 Volume;
 #X floatatom 561 442 5 0 0 0 - - -, f 5;
-#X obj 563 421 hsl 128 15 60 300 0 0 empty tempo2 empty -2 -8 0 10
--203904 -1 -1 1058 1;
+#X obj 563 421 hsl 128 15 60 320 0 0 empty tempo2 empty -2 -8 0 10
+-203904 -1 -1 977 1;
 #X floatatom 709 440 0 0 0 0 - - -;
 #X obj 711 422 hsl 128 15 0.5 3 0 0 empty delay empty -2 -8 0 10 -203904
 -1 -1 2540 1;
@@ -60,7 +59,7 @@
 -203904 -1 -1 6350 1;
 #X floatatom 561 496 5 0 0 0 - - -, f 5;
 #X obj 709 478 hsl 128 15 0 1 0 0 empty rhy-temp empty -2 -8 0 10 -203904
--1 -1 6350 1;
+-1 -1 6250 1;
 #X floatatom 707 497 5 0 0 0 - - -, f 5;
 #X text 567 403 Tempo;
 #X text 706 406 Delay Factor;
@@ -74,8 +73,8 @@
 #X text 708 358 Volume;
 #X text 664 305 Voice 2;
 #X floatatom 902 442 5 0 0 0 - - -, f 5;
-#X obj 904 421 hsl 128 15 60 300 0 0 empty tempo3 empty -2 -8 0 10
--261234 -1 -1 9525 1;
+#X obj 904 421 hsl 128 15 60 320 0 0 empty tempo3 empty -2 -8 0 10
+-261234 -1 -1 12700 1;
 #X floatatom 1050 440 5 0 0 0 - - -, f 5;
 #X obj 1052 422 hsl 128 15 0.5 3 0 0 empty delay empty -2 -8 0 10 -261234
 -1 -1 2540 1;
@@ -93,7 +92,7 @@
 1;
 #X text 930 327 Toggle on/off;
 #X obj 1051 371 hsl 128 15 0 127 0 0 empty volume3 empty -2 -8 0 10
--261234 -1 -1 3000 1;
+-261234 -1 -1 4400 1;
 #X text 1049 356 Volume;
 #X text 1010 307 Voice 3;
 #X text 994 226 Master Volume;
@@ -103,7 +102,7 @@
 #X obj 481 247 bng 30 250 50 0 empty empty Stop 35 7 0 10 -228856 -1
 -1;
 #X obj 976 245 hsl 128 30 0 30 0 0 empty empty empty -2 -8 0 10 -228856
--1 -1 1300 1;
+-1 -1 3400 1;
 #X obj 218 533 hsl 128 15 10 1010 0 0 empty attack1 empty -2 -8 0 10
 -204800 -1 -1 292 1;
 #X text 220 515 Attack;
@@ -131,7 +130,7 @@
 -1 -1 7620 1;
 #X text 553 566 Sustain;
 #X obj 905 530 hsl 128 15 10 10010 1 0 empty attack3 empty -2 -8 0
-10 -261234 -1 -1 7191 1;
+10 -261234 -1 -1 5507 1;
 #X text 907 512 Attack;
 #X obj 1046 530 hsl 128 15 10 4000 0 0 empty decay3 empty -2 -8 0 10
 -261234 -1 -1 1560 1;
@@ -156,17 +155,14 @@
 #X floatatom 1044 599 5 0 0 0 - - -, f 5;
 #X obj 217 371 nbx 2 25 2 7 0 0 empty octave1 empty 0 -8 0 10 -204800
 -1 -1 2 256;
-#X text 561 362 octave;
 #X obj 562 377 nbx 2 25 2 7 0 0 empty octave2 empty 0 -8 0 10 -203904
 -1 -1 5 256;
-#X text 901 357 octave;
 #X obj 902 372 nbx 2 25 2 7 0 0 empty octave3 empty 0 -8 0 10 -261234
 -1 -1 5 256;
 #X obj 1203 276 pack f 50;
 #X obj 615 377 nbx 2 25 -12 12 0 0 empty transpose empty 0 -8 0 10
 -203904 -1 -1 -7 256;
 #X text 614 362 Transpose;
-#X obj 895 669 markov-voice pitches3 rhythms3;
 #X msg 798 646 symbol c;
 #X obj 272 371 nbx 2 25 -12 12 0 0 empty transpose empty 0 -8 0 10
 -204800 -1 -1 -7 256;
@@ -215,124 +211,131 @@
 ;
 #X text 802 628 Starting Note;
 #X obj 546 669 markov-voice pitches2 rhythms2;
-#X obj 209 669 markov-voice pitches1 rhythms1;
 #X text 861 712 This patch features the panning process taken from
 the tut5-simple-synth.pd patch by Dimitrius Papageorgiou at http://michael-edwards.org/class/edi/music2d/dimitris8.zip
 ;
-#X msg 38 471 \; pan 0.5 \; tempo1 80 \; tempo2 80 \; tempo3 240 \;
+#X text 216 356 Octave;
+#X text 561 362 Octave;
+#X text 901 357 Octave;
+#X text 592 209 User Interface;
+#X text 92 453 initial settings;
+#X obj 895 669 markov-voice pitches3 rhythms3;
+#X obj 209 669 markov-voice pitches1 rhythms1;
+#X msg 38 471 \; pan 0.5 \; tempo1 80 \; tempo2 80 \; tempo3 320 \;
 delay 1 \; pitch-temp 0.5 \; rhy-temp 0.5 \; octave1 2 \; octave2 5
 \; octave3 5 \; transpose -7 \; volume1 30 \; volume2 30 \; volume3
 30 \; attack1 33 \; decay1 480 \; sustain1 0.35 \; release1 92 \; attack2
-40 \; decay2 900 \; sustain2 0.6 \; release2 60 \; attack3 500 \; decay3
+40 \; decay2 900 \; sustain2 0.6 \; release2 60 \; attack3 200 \; decay3
 500 \; sustain3 0.5 \; release3 120 \;;
-#X connect 2 0 1 0;
-#X connect 2 0 164 3;
-#X connect 4 0 3 0;
-#X connect 4 0 164 4;
-#X connect 5 0 6 0;
-#X connect 5 0 164 5;
-#X connect 7 0 8 0;
-#X connect 7 0 164 6;
-#X connect 10 0 9 1;
-#X connect 10 0 29 0;
-#X connect 11 0 9 0;
-#X connect 11 0 28 0;
-#X connect 12 0 13 0;
-#X connect 12 0 14 1;
-#X connect 14 0 11 0;
-#X connect 14 1 10 0;
-#X connect 15 0 16 0;
-#X connect 17 0 10 1;
-#X connect 17 0 11 1;
-#X connect 18 0 166 0;
-#X connect 19 0 22 0;
-#X connect 20 0 25 0;
-#X connect 21 0 25 0;
-#X connect 22 0 25 0;
-#X connect 23 0 19 0;
-#X connect 26 0 25 0;
-#X connect 27 0 25 1;
-#X connect 31 0 30 0;
-#X connect 37 0 164 1;
-#X connect 39 0 164 7;
-#X connect 42 0 41 0;
-#X connect 42 0 163 3;
-#X connect 44 0 43 0;
-#X connect 44 0 163 4;
-#X connect 45 0 46 0;
-#X connect 45 0 163 5;
-#X connect 47 0 48 0;
-#X connect 47 0 163 6;
-#X connect 53 0 163 1;
-#X connect 55 0 163 7;
-#X connect 59 0 58 0;
-#X connect 59 0 125 3;
-#X connect 61 0 60 0;
-#X connect 61 0 125 4;
-#X connect 62 0 63 0;
-#X connect 62 0 125 5;
-#X connect 64 0 65 0;
-#X connect 64 0 125 6;
-#X connect 70 0 125 1;
-#X connect 72 0 125 7;
+#X connect 1 0 0 0;
+#X connect 1 0 167 3;
+#X connect 3 0 2 0;
+#X connect 3 0 167 4;
+#X connect 4 0 5 0;
+#X connect 4 0 167 5;
+#X connect 6 0 7 0;
+#X connect 6 0 167 6;
+#X connect 9 0 8 1;
+#X connect 9 0 28 0;
+#X connect 10 0 8 0;
+#X connect 10 0 27 0;
+#X connect 11 0 12 0;
+#X connect 11 0 13 1;
+#X connect 13 0 10 0;
+#X connect 13 1 9 0;
+#X connect 14 0 15 0;
+#X connect 16 0 9 1;
+#X connect 16 0 10 1;
+#X connect 17 0 168 0;
+#X connect 18 0 21 0;
+#X connect 19 0 24 0;
+#X connect 20 0 24 0;
+#X connect 21 0 24 0;
+#X connect 22 0 18 0;
+#X connect 25 0 24 0;
+#X connect 26 0 24 1;
+#X connect 30 0 29 0;
+#X connect 36 0 167 1;
+#X connect 38 0 167 7;
+#X connect 41 0 40 0;
+#X connect 41 0 159 3;
+#X connect 43 0 42 0;
+#X connect 43 0 159 4;
+#X connect 44 0 45 0;
+#X connect 44 0 159 5;
+#X connect 46 0 47 0;
+#X connect 46 0 159 6;
+#X connect 52 0 159 1;
+#X connect 54 0 159 7;
+#X connect 58 0 57 0;
+#X connect 58 0 166 3;
+#X connect 60 0 59 0;
+#X connect 60 0 166 4;
+#X connect 61 0 62 0;
+#X connect 61 0 166 5;
+#X connect 63 0 64 0;
+#X connect 63 0 166 6;
+#X connect 69 0 166 1;
+#X connect 71 0 166 7;
+#X connect 76 0 19 0;
 #X connect 77 0 20 0;
-#X connect 78 0 21 0;
-#X connect 79 0 122 0;
-#X connect 80 0 105 0;
-#X connect 80 0 164 8;
-#X connect 82 0 106 0;
-#X connect 82 0 164 9;
-#X connect 84 0 108 0;
-#X connect 84 0 164 11;
-#X connect 86 0 166 0;
-#X connect 87 0 107 0;
-#X connect 87 0 164 10;
-#X connect 89 0 109 0;
-#X connect 89 0 163 8;
-#X connect 91 0 110 0;
-#X connect 91 0 163 9;
-#X connect 93 0 112 0;
-#X connect 93 0 163 11;
-#X connect 95 0 111 0;
-#X connect 95 0 163 10;
-#X connect 97 0 113 0;
-#X connect 97 0 125 8;
-#X connect 99 0 114 0;
-#X connect 99 0 125 9;
-#X connect 101 0 116 0;
-#X connect 101 0 125 11;
-#X connect 103 0 115 0;
-#X connect 103 0 125 10;
-#X connect 117 0 164 2;
-#X connect 119 0 163 2;
-#X connect 122 0 15 0;
-#X connect 123 0 163 12;
-#X connect 125 0 14 0;
-#X connect 126 0 125 0;
-#X connect 126 0 163 0;
-#X connect 126 0 164 0;
-#X connect 129 0 125 12;
-#X connect 131 0 126 0;
-#X connect 139 0 138 0;
-#X connect 139 0 137 0;
-#X connect 139 0 136 0;
-#X connect 139 0 135 0;
-#X connect 139 0 141 0;
-#X connect 139 0 142 0;
-#X connect 143 0 133 0;
-#X connect 144 0 134 0;
-#X connect 147 0 150 0;
-#X connect 148 0 152 0;
-#X connect 153 0 157 0;
-#X connect 154 0 158 0;
-#X connect 159 0 138 0;
-#X connect 159 0 137 0;
-#X connect 159 0 136 0;
-#X connect 159 0 135 0;
-#X connect 159 0 141 0;
-#X connect 159 0 142 0;
-#X connect 163 0 14 0;
-#X connect 164 0 14 0;
+#X connect 78 0 119 0;
+#X connect 79 0 104 0;
+#X connect 79 0 167 8;
+#X connect 81 0 105 0;
+#X connect 81 0 167 9;
+#X connect 83 0 107 0;
+#X connect 83 0 167 11;
+#X connect 85 0 168 0;
+#X connect 86 0 106 0;
+#X connect 86 0 167 10;
+#X connect 88 0 108 0;
+#X connect 88 0 159 8;
+#X connect 90 0 109 0;
+#X connect 90 0 159 9;
+#X connect 92 0 111 0;
+#X connect 92 0 159 11;
+#X connect 94 0 110 0;
+#X connect 94 0 159 10;
+#X connect 96 0 112 0;
+#X connect 96 0 166 8;
+#X connect 98 0 113 0;
+#X connect 98 0 166 9;
+#X connect 100 0 115 0;
+#X connect 100 0 166 11;
+#X connect 102 0 114 0;
+#X connect 102 0 166 10;
+#X connect 116 0 167 2;
+#X connect 117 0 159 2;
+#X connect 118 0 166 2;
+#X connect 119 0 14 0;
+#X connect 120 0 159 12;
+#X connect 122 0 159 0;
+#X connect 122 0 166 0;
+#X connect 122 0 167 0;
+#X connect 125 0 166 12;
+#X connect 127 0 122 0;
+#X connect 135 0 134 0;
+#X connect 135 0 133 0;
+#X connect 135 0 132 0;
+#X connect 135 0 131 0;
+#X connect 135 0 137 0;
+#X connect 135 0 138 0;
+#X connect 139 0 129 0;
+#X connect 140 0 130 0;
+#X connect 143 0 146 0;
+#X connect 144 0 148 0;
+#X connect 149 0 153 0;
+#X connect 150 0 154 0;
+#X connect 155 0 134 0;
+#X connect 155 0 133 0;
+#X connect 155 0 132 0;
+#X connect 155 0 131 0;
+#X connect 155 0 137 0;
+#X connect 155 0 138 0;
+#X connect 159 0 13 0;
+#X connect 166 0 13 0;
+#X connect 167 0 13 0;
 #X coords 0 -1 1 1 1000 400 1 200 225;
 #X restore 36 150 pd markov;
 #X obj 38 67 bng 30 250 50 0 empty empty empty 0 -7 0 10 -191407 -1
@@ -345,16 +348,26 @@ delay 1 \; pitch-temp 0.5 \; rhy-temp 0.5 \; octave1 2 \; octave2 5
 #X msg 533 28 c c 1;
 #X text 478 10 Replace row of pitches2;
 #X text 657 10 Replace row of rhythms2;
-#X msg 367 27 c 0.5 1;
 #X msg 202 28 c c 1;
 #X text 147 10 Replace row of pitches1;
 #X text 326 10 Replace row of rhythms1;
 #X text 0 48 Reset Transition Matrices;
+#X msg 398 32 c 2 1;
+#X msg 412 53 af 2 1;
+#X msg 424 75 bf 2 1;
+#X msg 315 32 c 1 1;
+#X msg 329 53 af 1 1;
+#X msg 339 74 bf 1 1;
 #X connect 1 0 0 0;
 #X connect 2 0 0 6;
 #X connect 3 0 0 5;
 #X connect 6 0 0 4;
 #X connect 7 0 0 3;
-#X connect 10 0 0 2;
-#X connect 11 0 0 1;
+#X connect 10 0 0 1;
+#X connect 14 0 0 2;
+#X connect 15 0 0 2;
+#X connect 16 0 0 2;
+#X connect 17 0 0 2;
+#X connect 18 0 0 2;
+#X connect 19 0 0 2;
 #X coords 0 730 1 729 85 60 0;

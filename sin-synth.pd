@@ -49,7 +49,6 @@
 #X text 253 46 Duration;
 #X text 136 43 Midi Value;
 #X obj 362 276 r \$0-release;
-#X obj 340 123 print;
 #X text 647 403 This patch was adapted from the synthesizer created
 in the tutorial by Eduardo Mezêncio at http://libremusicproduction.com/tutorials/creating-simple-synthesizer-pure-data-%E2%80%93-part-ii.
 It also features elements from the tut5-simple-synth.pd patch by Dimitrius
@@ -59,7 +58,6 @@ Papageorgiou found at http://michael-edwards.org/class/edi/music2d/dimitris8.zip
 #X connect 1 0 19 1;
 #X connect 2 0 0 0;
 #X connect 3 0 10 0;
-#X connect 3 0 48 0;
 #X connect 5 0 2 0;
 #X connect 6 0 8 1;
 #X connect 7 0 21 0;
