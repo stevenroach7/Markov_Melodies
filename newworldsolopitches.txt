@@ -1,0 +1,6 @@
+c ef 6 bf 7;
+ef c 5 ef 4 f 2 af 1; 
+f c 1 f 3 af 5; 
+g ef 4;
+af f 1 g 4 af 3 bf 5;
+bf c 6 f 1 af 5;
